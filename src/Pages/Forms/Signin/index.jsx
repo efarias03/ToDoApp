@@ -46,7 +46,7 @@ export const SigninPage = () => {
         localStorage.setItem("token", "token");
 
 
-        navigate(`/ToDoApp/${userId}`);
+        navigate(`/${userId}`);
     }
 
 
@@ -73,7 +73,7 @@ export const SigninPage = () => {
                     <button type="submit">Login</button>
 
                     <div className="second-option-group">
-                        <span>Doesn't have an account yet? <Link to="ToDoApp/signup">sign-up</Link></span>
+                        <span>Doesn't have an account yet? <Link to="/signup">sign-up</Link></span>
                     </div>
                 </form>
             </div>

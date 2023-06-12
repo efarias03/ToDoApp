@@ -1,3 +1,16 @@
+@keyframes smoothSpawnTask {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
 .task {
     display: flex;
     justify-content: space-between;
@@ -10,6 +23,8 @@
     padding: .5rem;
 
     border-top: 2px solid #1C1E28;
+
+    animation: smoothSpawnTask .6s ease;
 
     .left-task-content {
         display: flex;
@@ -48,6 +63,7 @@
         height: 30px;
 
         a {
+            cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;

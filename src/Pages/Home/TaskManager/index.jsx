@@ -25,7 +25,7 @@ export const TaskManager = () => {
                 const objectArray = Object.entries(snapshot.val());
                 setTaskList(objectArray);
             } else {
-                console.log("No data available");
+                return (setTaskList([]))
             }
         }).catch((error) => {
             console.error(error);
@@ -33,6 +33,7 @@ export const TaskManager = () => {
     }, [taskList])
 
     const deleteList = () => {
+        setTaskList([]);
         remove(ref(database, "users/" + id + "/tasks_list/"));
     }
 
@@ -71,8 +72,8 @@ export const TaskManager = () => {
     }
 
     return (
-        <div className="tasks-container">
-            <span>Task List of User: {id}</span>
+        <div className="task-manager-container">
+                    <div className="tasks-container">
             <div className="new-task-div">
                 <button id="add-task-id">Nada aqui</button>
                 <label id="new-task-label" htmlFor="newTask">Task:</label>
@@ -90,8 +91,10 @@ export const TaskManager = () => {
             </div>
 
             <div className="bottom-buttons">
-                <a onClick={deleteList} href="#">{taskList.length ? "Clear All" : " "}</a>
+                <a onClick={deleteList}>{taskList.length ? "Clear All" : " "}</a>
             </div>
         </div>
+        </div>
+
     )
 }

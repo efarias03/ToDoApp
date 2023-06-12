@@ -7,7 +7,7 @@ import { ErrorPage } from './Pages/ErrorPage'
 import { TaskManager } from './Pages/Home/TaskManager'
 import "./styles/global.css"
 
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
+import { RouterProvider, Navigate, createHashRouter } from "react-router-dom"
 
 const PrivateRoute = ({ children, redirectTo }) => {
   const isAuthenticated = localStorage.getItem("token") !== null;
@@ -16,30 +16,30 @@ const PrivateRoute = ({ children, redirectTo }) => {
   return isAuthenticated ? children : <Navigate to={redirectTo} />
 }
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/",
+    path: "/*",
     element: <MainPage />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "ToDoApp/:id",
+        path: "/*/:id",
         element: 
         <PrivateRoute redirectTo={"/signin"}>
           <TaskManager />
         </PrivateRoute>
       },
       {
-        path: "/signin",
+        path: "/*/signin",
         element: <SigninPage />
       },
       {
-        path: "/signup",
+        path: "/*/signup",
         element: <SignupPage />
       },
       {
-        path: "/",
-        element: <Navigate to="/:0" />,
+        path: "/*",
+        element: <Navigate to="/:id" />,
       }
     ]
   },

@@ -1,3 +1,13 @@
+@keyframes smoothSpawnTask {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .task {
   display: flex;
   justify-content: space-between;
@@ -7,6 +17,7 @@
   color: #191921;
   padding: 0.5rem;
   border-top: 2px solid #1C1E28;
+  animation: smoothSpawnTask 0.6s ease;
 }
 .task .left-task-content {
   display: flex;
@@ -36,6 +47,7 @@
   height: 30px;
 }
 .task .task-icons a {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
