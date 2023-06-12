@@ -90,7 +90,7 @@ export const TaskManager = () => {
             </div>
 
             <div className="bottom-buttons">
-                <a onClick={deleteList} href="#">{taskList.length ? "Clear All" : ""}</a>
+                <a onClick={deleteList} href="#">{taskList.length ? "Clear All" : " "}</a>
             </div>
         </div>
     )
