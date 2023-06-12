@@ -33,7 +33,6 @@ export const TaskManager = () => {
     }, [taskList])
 
     const deleteList = () => {
-        setTaskList([]);
         remove(ref(database, "users/" + id + "/tasks_list/"));
     }
 
