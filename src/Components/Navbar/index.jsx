@@ -10,7 +10,7 @@ export const NavBar = () => {
         
         localStorage.getItem("token") ? localStorage.removeItem("token") : alert("you need to login");
 
-        navigate("ToDoApp/signin");
+        navigate("/signin");
     }
 
     function toggleNavScrolled() {
