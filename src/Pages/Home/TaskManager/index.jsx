@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { getDatabase, ref, set, update, push, onValue, onChildAdded, get, child, remove } from "firebase/database";
 import { firebaseConfig } from "../../../Firebase/db_connection_form";
 import { initializeApp } from "firebase/app";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const TaskManager = () => {
     const { id } = useParams();
@@ -18,17 +18,19 @@ export const TaskManager = () => {
     const taskListRef = ref(database, "users/" + id + "/tasks_list/");
     const newTaskListRef = push(taskListRef);
 
-    get(child(dbRef, `users/${id}/tasks_list/`)).then((snapshot) => {
+    useEffect(() => {
+        get(child(dbRef, `users/${id}/tasks_list/`)).then((snapshot) => {
 
-        if (snapshot.exists()) {
-            const objectArray = Object.entries(snapshot.val());
-            setTaskList(objectArray);
-        } else {
-            console.log("No data available");
-        }
-    }).catch((error) => {
-        console.error(error);
-    });
+            if (snapshot.exists()) {
+                const objectArray = Object.entries(snapshot.val());
+                setTaskList(objectArray);
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }, [taskList])
 
     const deleteList = () => {
         remove(ref(database, "users/" + id + "/tasks_list/"));

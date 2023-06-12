@@ -46,7 +46,7 @@ export const SigninPage = () => {
         localStorage.setItem("token", "token");
 
 
-        navigate(`ToDoApp/${userId}`);
+        navigate(`/${userId}`);
     }
 
 
