@@ -41,7 +41,7 @@ export const SignupPage = () => {
 
                         alert("account created")
                         localStorage.setItem("token", "token");
-                        navigate(`/${user.uid}`)
+                        navigate(`ToDoApp/${user.uid}`)
                     })
                     .catch((error) => {
                         // The write failed...
@@ -99,7 +99,7 @@ export const SignupPage = () => {
                     <button type="submit">Create</button>
 
                     <div className="second-option-group">
-                        <span>Already have an account? <Link to="/signin">sign-in</Link></span>
+                        <span>Already have an account? <Link to="ToDoApp/signin">sign-in</Link></span>
                     </div>
                 </form>
             </div>

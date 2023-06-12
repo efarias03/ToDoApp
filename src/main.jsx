@@ -18,27 +18,27 @@ const PrivateRoute = ({ children, redirectTo }) => {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "ToDoApp/",
     element: <MainPage />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/:id",
+        path: "ToDoApp/:id",
         element: 
         <PrivateRoute redirectTo={"/signin"}>
           <TaskManager />
         </PrivateRoute>
       },
       {
-        path: "/signin",
+        path: "ToDoApp/signin",
         element: <SigninPage />
       },
       {
-        path: "/signup",
+        path: "ToDoApp/signup",
         element: <SignupPage />
       },
       {
-        path: "/",
+        path: "ToDoApp/",
         element: <Navigate to="/:0" />,
       }
     ]
